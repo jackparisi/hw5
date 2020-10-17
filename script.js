@@ -14,6 +14,7 @@ var fullDate = $(document).ready(function(){
     var time = moment().format('LLLL');
 $("#currentDay").text(time);
 });
+var parsHour = parseInt(currentHour);
 //var nowHour = now().hour()
 //logging to see if time works
 console.log(currentHour);
@@ -26,6 +27,16 @@ console.log(currentDate);
 console.log(fullDate);
 //appending the header to add current date and time
 //$("#currentDay").append(currentDate + " " + currentTime);
+if($(".row").value > parsHour){
+    $(".row").addClass("future")
+}
+else if($(".row").value === parsHour){
+    $(".row").addClass("present")
+}
+else if($(".row").value < parsHour){
+    $(".row").addClass("past")
+}
+
 
 //saving input text 
 $(".9am").click(function(e){
@@ -95,3 +106,6 @@ $(".9pm").click(function(){
     console.log(task9pm);
     localStorage.setItem("#task9pm", task9pm);
 });
+
+console.log(localStorage.getItem("#task9pm"))
+//document.localStorage.getItem(task9pm);
